@@ -6,9 +6,31 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
     steps:
+
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
 
-    - name: Hello world       # Name of step
-      uses: actions/hello-world-javascript-action@v1.1 # Name of the action. This uses https://github.com/actions/hello-world-javascript-action
-      with:                                            # This section is needed if you need to pass arguments to the action
-        who-to-greet: 'Mona the Octocat'
+    - name: BuildCode
+      working-directory: .\DotnetTemplate.Web
+      run: npm run build
+
+    - name: RunCtests
+      working-directory: .\DotnetTemplate.Web.Tests
+      run: dotnet test
+
+    - name: BuildTypscript
+      working-directory: .\DotnetTemplate.Web
+      run: npm run build
+
+    - name: LintOnTypescript
+      working-directory: .\DotnetTemplate.Web
+      run: npm run lint
+
+    - name: TypeScriptsTests
+      working-directory: .\DotnetTemplate.Web
+      run: npm t
+
+
+    #- name: Hello world       # Name of step
+    #  uses: actions/hello-world-javascript-action@v1.1 # Name of the action. This uses https://github.com/actions/hello-world-javascript-action
+    #  with:                                            # This section is needed if you need to pass arguments to the action
+    #    who-to-greet: 'Mona the Octocat'
