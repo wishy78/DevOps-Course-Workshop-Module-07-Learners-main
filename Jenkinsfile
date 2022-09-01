@@ -12,7 +12,7 @@ pipeline {
                     steps {
                         dir('DotnetTemplate.Web/') {
                             sh 'npm install'
-                            sh 'build'
+                            sh 'npm run build'
                         }
                     }
                 }
