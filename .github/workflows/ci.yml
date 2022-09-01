@@ -11,7 +11,7 @@ jobs:
 
     - name: BuildCode
       working-directory: DotnetTemplate.Web
-      run: npm run build
+      run: dotnet build
 
     - name: RunCtests
       working-directory: DotnetTemplate.Web.Tests
