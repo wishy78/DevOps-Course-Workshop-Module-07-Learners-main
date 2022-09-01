@@ -51,7 +51,7 @@ pipeline {
                 }
                 stage('RunCTests') {
                     steps {
-                        dir('DotnetTemplate.Web.test/') {
+                        dir('DotnetTemplate.Web.Tests/') {
                             sh 'dotnet test'
                         }
                     }
