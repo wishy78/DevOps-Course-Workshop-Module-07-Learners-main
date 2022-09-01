@@ -4,7 +4,7 @@ pipeline {
         stage('Typescript') {
             agent {
                 docker {
-                    image 'node:16-alpine'
+                    image 'node:17-bullseye'
                 }
             }
             stages{
@@ -37,6 +37,9 @@ pipeline {
                 docker {
                     image 'mono:latest'
                 }
+            }
+            environment {
+                DOTNET_CLI_HOME = '/tmp/dotnet_cli_home'
             }
             stages{
                 stage('BuildCode') {
