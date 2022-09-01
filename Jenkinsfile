@@ -35,7 +35,7 @@ pipeline {
        stage('BuildCode') {
             agent {
                 docker {
-                    image 'dotnet:.NET'
+                    image 'mono:latest'
                 }
             }
             environment {
